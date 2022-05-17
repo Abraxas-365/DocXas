@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+    ports:
+      - 27018:27017
+    networks:
+      - docxas
+
+  documentator:
+    environment:
+      MONGODB_URI: mongodb://root:example@mongo:27017/
+    build: ./services/user-service/.
+    restart: always
+    ports:
+      - 3000
+    depends_on:
+      - mongo
+    networks:
+      - docxas
+networks:
+  docxas:
+    driver: bridge
