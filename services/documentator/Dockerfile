@@ -27,4 +27,4 @@ RUN go build cmd/main.go
 EXPOSE 3000:3000
 
 # Run the executable
-CMD ["./main]
+CMD ["./main"]
