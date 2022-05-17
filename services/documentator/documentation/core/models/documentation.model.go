@@ -18,11 +18,11 @@ type Documentation struct {
 	Creator         string             `yaml:"creator" json:"creator" bson:"creator"`
 	Maintainer      string             `yaml:"maintainer" json:"maintainer" bson:"maintainer"`
 	Git             string             `yaml:"git" json:"git" bson:"git"`
+	Language        string             `yaml:"language" json:"language" bson:"language"`
 	DependsOn       DependsOn          `yaml:"depends_on,omitempty" json:"depends_on,omitempty" bson:"depends_on,omitempty"`
 	Active          bool               `yaml:"active" json:"active" bson:"active"`
 	Infraestructure []*Infraestructure `yaml:"infraestructure" json:"infraestructure" bson:"infraestructure"`
 	Team            string             `yaml:"team,omitempty" json:"team,omitempty" bson:"team,omitempty"`
-	Language        string             `yaml:"language" json:"language" bson:"language"`
 	Description     string             `yaml:"description" json:"description" bson:"description"`
 	CreationDate    time.Time          `yaml:"creation_date" json:"creation_date" bson:"creation_date"`
 	LastUpdated     time.Time          `yaml:"last_updated" json:"last_updated" bson:"last_updated"`
@@ -47,6 +47,8 @@ type Api struct {
 }
 
 func (d *Documentation) Read(url string) error {
+	d.Id = uuid.New()
+	d.Git = url
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Println(err)
