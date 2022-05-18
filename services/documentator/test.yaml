@@ -11,8 +11,7 @@ depends_on:
     service_name: "xservice"
     description: "description"
     extra_info:
-      - "bla bla"
-      - "bla bal"
+      test: "ddd"
 infraesctructure:
   db:
     name: "mongo"
