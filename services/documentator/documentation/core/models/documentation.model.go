@@ -13,17 +13,17 @@ import (
 
 type Documentation struct {
 	Id              uuid.UUID          `yaml:"id,omitempty" json:"id" bson:"_id,omitempty"`
-	ServiceName     string             `yaml:"service_name" json:"service_name" bson:"service_name"`
-	Version         int                `yaml:"version" json:"version" bson:"version"`
 	Creator         string             `yaml:"creator" json:"creator" bson:"creator"`
 	Maintainer      string             `yaml:"maintainer" json:"maintainer" bson:"maintainer"`
-	Git             string             `yaml:"git" json:"git" bson:"git"`
-	Language        string             `yaml:"language" json:"language" bson:"language"`
-	DependsOn       DependsOn          `yaml:"depends_on,omitempty" json:"depends_on,omitempty" bson:"depends_on,omitempty"`
-	Active          bool               `yaml:"active" json:"active" bson:"active"`
-	Infraestructure []*Infraestructure `yaml:"infraestructure" json:"infraestructure" bson:"infraestructure"`
 	Team            string             `yaml:"team,omitempty" json:"team,omitempty" bson:"team,omitempty"`
+	ServiceName     string             `yaml:"service_name" json:"service_name" bson:"service_name"`
+	Version         int                `yaml:"version" json:"version" bson:"version"`
+	Language        string             `yaml:"language" json:"language" bson:"language"`
 	Description     string             `yaml:"description" json:"description" bson:"description"`
+	Git             string             `yaml:"git" json:"git" bson:"git"`
+	Active          bool               `yaml:"active" json:"active" bson:"active"`
+	DependsOn       []*DependsOn       `yaml:"depends_on,omitempty" json:"depends_on,omitempty" bson:"depends_on,omitempty"`
+	Infraestructure []*Infraestructure `yaml:"infraestructure" json:"infraestructure" bson:"infraestructure"`
 	CreationDate    time.Time          `yaml:"creation_date" json:"creation_date" bson:"creation_date"`
 	LastUpdated     time.Time          `yaml:"last_updated" json:"last_updated" bson:"last_updated"`
 	Apis            []*Api             `yaml:"apis,omitempty" json:"apis,omitempty" bson:"apis,omitempty"`

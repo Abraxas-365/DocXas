@@ -1,5 +1,26 @@
-creator: 'Luisfernando'
-manteiner: 'Luisfernando'
-language: 'go'
-description: "ddd"
+creator: "Luis Fernando"
+mantainer: "Luis Fernando"
+service_name: "DocXas"
 version: 1
+language: "golang"
+description: "simple microserivces documentation api"
+git: "https://raw.githubusercontent.com/Abraxas-365/DocXas/main/services/documentator/test.yaml"
+active: true
+depends_on:
+    - xService:
+      service_name: "xservice"
+      description: "description"
+      extra_info:
+        - "bla bla"
+        - "bla bal"
+infraesctructure:
+  - db:
+      name: "mongo"
+      description: "bla"
+apis:
+  - create:
+      - type: "rest"
+      - description: "create"
+      - extra_info:
+          - "creates user"
+          - "route: /api/xxx/xxx"
