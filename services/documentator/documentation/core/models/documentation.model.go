@@ -12,27 +12,27 @@ import (
 )
 
 type Documentation struct {
-	Id              uuid.UUID          `yaml:"id,omitempty" json:"id" bson:"_id,omitempty"`
-	Creator         string             `yaml:"creator" json:"creator" bson:"creator"`
-	Maintainer      string             `yaml:"maintainer" json:"maintainer" bson:"maintainer"`
-	Team            string             `yaml:"team,omitempty" json:"team,omitempty" bson:"team,omitempty"`
-	ServiceName     string             `yaml:"service_name" json:"service_name" bson:"service_name"`
-	Version         int                `yaml:"version" json:"version" bson:"version"`
-	Language        string             `yaml:"language" json:"language" bson:"language"`
-	Description     string             `yaml:"description" json:"description" bson:"description"`
-	Git             string             `yaml:"git" json:"git" bson:"git"`
-	Active          bool               `yaml:"active" json:"active" bson:"active"`
-	DependsOn       []*DependsOn       `yaml:"depends_on,omitempty" json:"depends_on,omitempty" bson:"depends_on,omitempty"`
-	Infraestructure []*Infraestructure `yaml:"infraestructure" json:"infraestructure" bson:"infraestructure"`
-	CreationDate    time.Time          `yaml:"creation_date" json:"creation_date" bson:"creation_date"`
-	LastUpdated     time.Time          `yaml:"last_updated" json:"last_updated" bson:"last_updated"`
-	Apis            []*Api             `yaml:"apis,omitempty" json:"apis,omitempty" bson:"apis,omitempty"`
+	Id              uuid.UUID                  `yaml:"id,omitempty" json:"id" bson:"_id,omitempty"`
+	Creator         string                     `yaml:"creator" json:"creator" bson:"creator"`
+	Maintainer      string                     `yaml:"maintainer" json:"maintainer" bson:"maintainer"`
+	Team            string                     `yaml:"team,omitempty" json:"team,omitempty" bson:"team,omitempty"`
+	ServiceName     string                     `yaml:"service_name" json:"service_name" bson:"service_name"`
+	Version         int                        `yaml:"version" json:"version" bson:"version"`
+	Language        string                     `yaml:"language" json:"language" bson:"language"`
+	Description     string                     `yaml:"description" json:"description" bson:"description"`
+	Git             string                     `yaml:"git" json:"git" bson:"git"`
+	Active          bool                       `yaml:"active" json:"active" bson:"active"`
+	DependsOn       map[string]DependsOn       `yaml:"depends_on,omitempty" json:"depends_on,omitempty" bson:"depends_on,omitempty"`
+	Infraestructure map[string]Infraestructure `yaml:"infraestructure" json:"infraestructure" bson:"infraestructure"`
+	Apis            map[string]Api             `yaml:"apis,omitempty" json:"apis,omitempty" bson:"apis,omitempty"`
+	CreationDate    time.Time                  `yaml:"creation_date" json:"creation_date" bson:"creation_date"`
+	LastUpdated     time.Time                  `yaml:"last_updated" json:"last_updated" bson:"last_updated"`
 }
 
 type DependsOn struct {
-	ServiceName string    `yaml:"service_name" json:"service_name" bson:"service_name"`
-	Description string    `yaml:"description,omitempty" json:"description,omitempty" bson:"description,omitempty"`
-	ExtraInfo   []*string `yaml:"extra_info,omitempty" json:"extra_info,omitempty" json:"extra_info,omitempty"`
+	ServiceName string   `yaml:"service_name" json:"service_name" bson:"service_name"`
+	Description string   `yaml:"description,omitempty" json:"description,omitempty" bson:"description,omitempty"`
+	ExtraInfo   []string `yaml:"extra_info,omitempty" json:"extra_info,omitempty" json:"extra_info,omitempty"`
 }
 
 type Infraestructure struct {
@@ -41,9 +41,9 @@ type Infraestructure struct {
 }
 
 type Api struct {
-	Type        string    `yaml:"type,omitempty" json:"type,omitempty" bson:"type,omitempty"` //rest , mq
-	Description string    `yaml:"description,omitempty" json:"description,omitempty" bson:"description,omitempty"`
-	ExtraInfo   []*string `yaml:"extra_info,omitempty" json:"extra_info,omitempty" bson:"extra_info,omitempty"`
+	Type        string   `yaml:"type,omitempty" json:"type,omitempty" bson:"type,omitempty"` //rest , mq
+	Description string   `yaml:"description,omitempty" json:"description,omitempty" bson:"description,omitempty"`
+	ExtraInfo   []string `yaml:"extra_info,omitempty" json:"extra_info,omitempty" bson:"extra_info,omitempty"`
 }
 
 func (d *Documentation) Read(url string) error {

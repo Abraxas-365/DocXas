@@ -19,10 +19,8 @@ infraesctructure:
       description: "bla"
 apis:
   create:
-    - type: "rest"
-    - description: "create"
-    - extra_info:
-        - "creates user"
-        - "route: /api/xxx/xxx"
- 
- 
+    type: "rest"
+    description: "create"
+    extra_info:
+      - "creates user"
+      - "route: /api/xxx/xxx"
