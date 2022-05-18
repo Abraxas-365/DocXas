@@ -11,12 +11,12 @@ func (repo *mongoRepository) DoesExist(name string, version int) bool {
 	defer cancel()
 	collection := repo.client.Database(repo.database).Collection(repo.collection)
 
-	filter := bson.M{"name": name, "version": version}
+	filter := bson.M{"service_name": name, "version": version}
 	check := bson.M{}
 	if err := collection.FindOne(ctx, filter).Decode(check); err != nil {
-		return true
+		return false
 	}
 
-	return false
+	return true
 
 }

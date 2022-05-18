@@ -68,3 +68,25 @@ func (d *Documentation) Read(url string) error {
 	}
 	return nil
 }
+
+func (d *Documentation) Update(url string) error {
+	d.Git = url
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+	defer resp.Body.Close()
+	yamlFile, err := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(yamlFile))
+	if err != nil {
+		log.Printf("yamlFile.Get err   #%v ", err)
+		return err
+	}
+	err = yaml.Unmarshal(yamlFile, d)
+	if err != nil {
+		log.Printf("Unmarshal: %v", err)
+		return err
+	}
+	return nil
+}
