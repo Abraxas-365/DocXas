@@ -1,5 +1,5 @@
 creator: "Luis Fernando"
-mantainer: "Luis Fernando"
+maintainer: "Luis Fernando"
 service_name: "DocXas"
 version: 1
 language: "golang"
@@ -14,13 +14,13 @@ depends_on:
       - "bla bla"
       - "bla bal"
 infraesctructure:
-  - db:
-      name: "mongo"
-      description: "bla"
+  db:
+    name: "mongo"
+    description: "bla"
 apis:
   create:
     type: "rest"
     description: "create"
     extra_info:
-      - "creates user"
-      - "route: /api/xxx/xxx"
+      route1: "/api/xxx/xxx"
+      route2: "/api/xxx/xxx"

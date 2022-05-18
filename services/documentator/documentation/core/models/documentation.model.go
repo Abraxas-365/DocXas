@@ -30,9 +30,9 @@ type Documentation struct {
 }
 
 type DependsOn struct {
-	ServiceName string   `yaml:"service_name" json:"service_name" bson:"service_name"`
-	Description string   `yaml:"description,omitempty" json:"description,omitempty" bson:"description,omitempty"`
-	ExtraInfo   []string `yaml:"extra_info,omitempty" json:"extra_info,omitempty" json:"extra_info,omitempty"`
+	ServiceName string            `yaml:"service_name" json:"service_name" bson:"service_name"`
+	Description string            `yaml:"description,omitempty" json:"description,omitempty" bson:"description,omitempty"`
+	ExtraInfo   map[string]string `yaml:"extra_info,omitempty" json:"extra_info,omitempty" json:"extra_info,omitempty"`
 }
 
 type Infraestructure struct {
@@ -41,9 +41,9 @@ type Infraestructure struct {
 }
 
 type Api struct {
-	Type        string   `yaml:"type,omitempty" json:"type,omitempty" bson:"type,omitempty"` //rest , mq
-	Description string   `yaml:"description,omitempty" json:"description,omitempty" bson:"description,omitempty"`
-	ExtraInfo   []string `yaml:"extra_info,omitempty" json:"extra_info,omitempty" bson:"extra_info,omitempty"`
+	Type        string            `yaml:"type,omitempty" json:"type,omitempty" bson:"type,omitempty"` //rest , mq
+	Description string            `yaml:"description,omitempty" json:"description,omitempty" bson:"description,omitempty"`
+	ExtraInfo   map[string]string `yaml:"extra_info,omitempty" json:"extra_info,omitempty" bson:"extra_info,omitempty"`
 }
 
 func (d *Documentation) Read(url string) error {
@@ -63,7 +63,7 @@ func (d *Documentation) Read(url string) error {
 	}
 	err = yaml.Unmarshal(yamlFile, d)
 	if err != nil {
-		log.Fatalf("Unmarshal: %v", err)
+		log.Printf("Unmarshal: %v", err)
 		return err
 	}
 	return nil

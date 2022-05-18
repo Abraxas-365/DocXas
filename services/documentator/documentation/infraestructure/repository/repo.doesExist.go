@@ -14,9 +14,9 @@ func (repo *mongoRepository) DoesExist(name string, version int) bool {
 	filter := bson.M{"name": name, "version": version}
 	check := bson.M{}
 	if err := collection.FindOne(ctx, filter).Decode(check); err != nil {
-		return false
+		return true
 	}
 
-	return true
+	return false
 
 }
